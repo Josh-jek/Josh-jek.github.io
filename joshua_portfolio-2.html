@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Joshua S. Fernandez">
+  <title>Joshua S. Fernandez | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #657087;
+      --accent: #2463eb;
+      --accent-dark: #1749b5;
+      --line: #e5eaf2;
+      --shadow: 0 14px 40px rgba(25, 42, 75, .08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    nav {
+      min-height: 70px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .brand { font-size: 1.1rem; font-weight: 800; letter-spacing: .2px; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 25px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .93rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { padding: 100px 0 85px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.4fr .8fr;
+      gap: 55px; align-items: center;
+    }
+    .eyebrow {
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 2px; font-size: .78rem; font-weight: 800;
+    }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.08; margin: 14px 0 18px; }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); max-width: 620px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-block; padding: 12px 20px; border-radius: 9px;
+      font-weight: 700; border: 1px solid var(--accent); transition: .2s;
+    }
+    .btn.primary { background: var(--accent); color: white; }
+    .btn.primary:hover { background: var(--accent-dark); }
+    .btn.secondary { color: var(--accent); background: white; }
+    .btn.secondary:hover { background: #edf3ff; }
+    .profile-card {
+      background: var(--surface); padding: 32px; border-radius: 22px;
+      box-shadow: var(--shadow); text-align: center; border: 1px solid var(--line);
+    }
+    .avatar {
+      width: 145px; height: 145px; margin: 0 auto 18px; border-radius: 50%;
+      display: grid; place-items: center; color: white;
+      font-size: 2.6rem; font-weight: 800;
+      background: linear-gradient(135deg, #2463eb, #7c9fff);
+    }
+    .profile-card h2 { font-size: 1.25rem; }
+    .profile-card p { color: var(--muted); font-size: .92rem; margin-top: 4px; }
+    section { padding: 72px 0; }
+    .section-heading { margin-bottom: 28px; }
+    .section-heading h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-top: 5px; }
+    .section-heading p { color: var(--muted); margin-top: 5px; }
+    .about-box, .card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 16px; padding: 26px; box-shadow: var(--shadow);
+    }
+    .about-box p { color: var(--muted); }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card h3 { margin-bottom: 8px; }
+    .card p, .card li { color: var(--muted); }
+    .card ul { padding-left: 19px; margin-top: 10px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      padding: 8px 13px; background: #eaf0ff; color: #214fae;
+      border-radius: 999px; font-size: .88rem; font-weight: 700;
+    }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item {
+      background: white; border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px 24px; box-shadow: var(--shadow);
+    }
+    .timeline-item .date { color: var(--accent); font-size: .85rem; font-weight: 800; }
+    .timeline-item h3 { margin: 5px 0; }
+    .timeline-item p { color: var(--muted); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .contact-item { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+    .contact-item small { display: block; color: var(--muted); margin-bottom: 4px; }
+    .contact-item a { color: var(--accent); overflow-wrap: anywhere; font-weight: 700; }
+    footer { padding: 25px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: .9rem; }
+    @media (max-width: 760px) {
+      .hero { padding: 65px 0; }
+      .hero-grid, .cards, .contact-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 30px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .8rem; }
+      .brand { font-size: .95rem; }
+    }
+    @media (max-width: 430px) {
+      nav { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .nav-links { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">JOSHUA<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Welcome to my portfolio</div>
+          <h1>Hi, I'm <span>Joshua S. Fernandez.</span></h1>
+          <p>
+            I am a motivated student and aspiring technology professional who enjoys
+            learning, collaborating, solving problems, and taking responsibility for
+            project tasks. Explore my background, experience, and skills below.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#contact">Contact Me</a>
+            <a class="btn secondary" href="https://github.com/Josh-jek" target="_blank" rel="noopener">View GitHub</a>
+          </div>
+        </div>
+        <aside class="profile-card">
+          <div class="avatar" aria-label="Initials JF">JF</div>
+          <h2>Joshua S. Fernandez</h2>
+          <p>Student · Aspiring IT Professional</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Get to know me</div>
+          <h2>About Me</h2>
+        </div>
+        <div class="about-box">
+          <p>
+            I am eager to develop my knowledge and practical skills in technology.
+            I value teamwork, communication, organization, and continuous improvement.
+            I also enjoy helping coordinate tasks, keeping work organized, and making
+            sure team members understand their responsibilities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">My background</div>
+          <h2>Education</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">2022 – 2024</div>
+            <h3>Senior High School — Technical-Vocational-Livelihood</h3>
+            <p>Agusan National High School</p>
+          </article>
+          <article class="timeline-item">
+            <h3>High School</h3>
+            <p>Tablon National High School</p>
+          </article>
+          <article class="timeline-item">
+            <h3>Elementary</h3>
+            <p>Malabang Central Elementary Pilot School</p>
+          </article>
+          <article class="timeline-item">
+            <h3>College</h3>
+            <p>PHINMA Cagayan de Oro College</p>
+            <p>Bachelor of Science in Information Technology (BSIT) — 3rd Year</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I have worked on</div>
+          <h2>Experience & Responsibilities</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Project Manager</h3>
+            <p>
+              Helped guide project activities by organizing tasks, coordinating with
+              team members, monitoring progress, and making sure responsibilities
+              were understood and completed on time.
+            </p>
+            <ul>
+              <li>Organized project tasks and priorities.</li>
+              <li>Communicated updates and reminders to team members.</li>
+              <li>Monitored deadlines and overall project progress.</li>
+              <li>Helped address challenges and keep the team focused.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Academic & Technical Projects</h3>
+            <p>
+              Worked on learning activities involving computer systems, networking,
+              cybersecurity, databases, and data analysis.
+            </p>
+            <ul>
+              <li>Practiced basic network troubleshooting and configuration.</li>
+              <li>Studied database operations and data security concepts.</li>
+              <li>Completed research, documentation, and presentation tasks.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I bring</div>
+          <h2>Skills & Strengths</h2>
+          <p>A selection of skills developed through school activities and projects.</p>
+        </div>
+        <div class="about-box">
+          <div class="tag-list">
+            <span class="tag">Project Coordination</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Time Management</span>
+            <span class="tag">Problem Solving</span>
+            <span class="tag">Basic Networking</span>
+            <span class="tag">Cybersecurity Fundamentals</span>
+            <span class="tag">Database Fundamentals</span>
+            <span class="tag">Documentation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Contact Me</h2>
+          <p>Feel free to reach out through the details below.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <small>Email</small>
+            <a href="mailto:osse.fernandez.coc@phinmaed.com">osse.fernandez.coc@phinmaed.com</a>
+          </div>
+          <div class="contact-item">
+            <small>Phone</small>
+            <a href="tel:09659211934">09659211934</a>
+          </div>
+          <div class="contact-item">
+            <small>GitHub</small>
+            <a href="https://github.com/Josh-jek" target="_blank" rel="noopener">github.com/Josh-jek</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Joshua S. Fernandez. All rights reserved.</div>
+  </footer>
+</body>
+</html>
